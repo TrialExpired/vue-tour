@@ -3789,7 +3789,7 @@ function destroy() {
 
   // touch DOM only if `applyStyle` modifier is enabled
   if (isModifierEnabled(this.modifiers, 'applyStyle')) {
-    this.popper.removeAttribute('x-placement');
+    this.popper.removeAttribute('data-popper-placement');
     this.popper.style.position = '';
     this.popper.style.top = '';
     this.popper.style.left = '';
@@ -3977,7 +3977,7 @@ function applyStyle(data) {
 }
 
 /**
- * Set the x-placement attribute before everything else because it could be used
+ * Set the data-popper-placement attribute before everything else because it could be used
  * to add margins to the popper margins needs to be calculated to get the
  * correct popper offsets.
  * @method
@@ -3995,7 +3995,7 @@ function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
   // and refer to originalPlacement to know the original value
   var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
 
-  popper.setAttribute('x-placement', placement);
+  popper.setAttribute('data-popper-placement', placement);
 
   // Apply `position` to popper before anything else because
   // without the position applied we can't guarantee correct computations
@@ -4142,7 +4142,7 @@ function computeStyle(data, options) {
 
   // Attributes
   var attributes = {
-    'x-placement': data.placement
+    'data-popper-placement': data.placement
   };
 
   // Update `data` attributes, styles and arrowStyles
